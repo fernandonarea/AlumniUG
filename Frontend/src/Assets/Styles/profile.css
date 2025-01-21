@@ -1,0 +1,52 @@
+.parent{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: flex-start;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: sticky;
+    top: 30px;
+}
+
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    border-radius: 15px;
+    background-color: white;
+    gap: 15px;
+    align-items: center;
+}
+
+.postUser{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.posts{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px ;
+    background-color: white;
+    border-radius: 15px ;
+    width: 200px;
+    height: fit-content;
+    align-items: center;
+}
+
+.statsProfile{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}

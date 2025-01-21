@@ -1,0 +1,1 @@
+22:17:22 - ERR - ExecuteNonQuery - (ForeignKeyViolation('inserción o actualización en la tabla «users» viola la llave foránea «users_id_facultad_fkey»\nDETAIL:  La llave (id_facultad)=(0) no está presente en la tabla «faculties».\n'),)

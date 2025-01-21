@@ -1,0 +1,96 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Documentación  de Servicios Web del proyecto final de DAWA",
+    "version": "1.0.0",
+    "title": "Documentación de DAWA",
+    "termsOfService": "Leer wwww.ug.edu.com",
+    "contact": {
+      "email": "anthony.nareafra@ug.edu.ec"
+    },
+    "license": {
+      "name": "AlumniUG",
+      "url": "none"
+    }
+  },
+  "tags": [
+    {
+      "name": "microservicio de facultades",
+      "description": "Leer facultades de la base de datos"
+    }
+  ],
+  "paths": {
+    "/facultades": {
+      "get": {
+        "tags": [
+          "Facultades"
+        ],
+        "summary": "Obtener todos las facultades",
+        "description": "Obtener todos las facultades de la base de datos",
+        "operationId": "getFaculties",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitud exitosa",
+            "schema": {
+              "$ref": "#/definitions/Faculties"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Faculties": {
+      "type": "object",
+      "properties": {
+        "id_facultad": {
+          "type": "integer",
+          "description": "ID de la facultad"
+        },
+        "nombre": {
+          "type": "string",
+          "description": "Nombre de la facultad"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Mensaje de error"
+        },
+        "errors": {
+          "type": "object",
+          "description": "Diccionario con los errores de validación"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

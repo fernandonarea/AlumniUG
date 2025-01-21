@@ -1,0 +1,3 @@
+00:02:48 - ERR - getRecords - (UnicodeDecodeError('utf-8', b'connection to server at "host.docker.internal" (192.168.1.7), port 5432 failed: FATAL:  no hay una l\xednea en pg_hba.conf para \xab192.168.1.7\xbb, usuario \xabpostgres\xbb, base de datos \xabAlumniUG\xbb, sin cifrado\n', 100, 101, 'invalid continuation byte'),)
+00:02:48 - ERR - get_foros - (UnboundLocalError("cannot access local variable 'cursor' where it is not associated with a value"),)
+00:05:30 - ERR - getRecords - (TypeError("object of type 'int' has no len()"),)

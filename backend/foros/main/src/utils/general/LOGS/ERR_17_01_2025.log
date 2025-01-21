@@ -1,0 +1,5 @@
+11:09:51 - ERR - ExecuteNonQuery - (IndexError('tuple index out of range'),)
+11:52:39 - ERR - ExecuteNonQuery - (IndexError('tuple index out of range'),)
+11:53:07 - ERR - ExecuteNonQuery - (ForeignKeyViolation('inserción o actualización en la tabla «users» viola la llave foránea «users_id_facultad_fkey»\nDETAIL:  La llave (id_facultad)=(0) no está presente en la tabla «faculties».\n'),)
+12:44:19 - ERR - ExecuteNonQuery - (ForeignKeyViolation('inserción o actualización en la tabla «users» viola la llave foránea «users_id_facultad_fkey»\nDETAIL:  La llave (id_facultad)=(0) no está presente en la tabla «faculties».\n'),)
+13:54:38 - ERR - ExecuteNonQuery - (UniqueViolation('llave duplicada viola restricción de unicidad «users_username_key»\nDETAIL:  Ya existe la llave (username)=(kiara@gmail.com).\n'),)

@@ -1,0 +1,162 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Documentación  de Servicios Web del proyecto final de DAWA",
+    "version": "1.0.0",
+    "title": "Documentación de DAWA",
+    "termsOfService": "Leer wwww.ug.edu.com",
+    "contact": {
+      "email": "anthony.nareafra@ug.edu.ec"
+    },
+    "license": {
+      "name": "AlumniUG",
+      "url": "none"
+    }
+  },
+  "tags": [
+    {
+      "name": "microservicio de amistades",
+      "description": "agregar amigos"
+    }
+  ],
+  "paths": {
+    "/add/friend/{user_id}/{amigo_id}": {
+      "post": {
+        "tags": [
+          "Friends"
+        ],
+        "summary": "Agregar amigo",
+        "description": "agrega amigos",
+        "operationId": "addFriends",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "ID del usuario",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "amigo_id",
+            "description": "id del usuario a agregar",
+            "required": true,
+            "type": "integer"
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario actualizado correctamente",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Datos de solicitud inválidos",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+"/num/friends/{user_id}": {
+  "get": {
+    "tags": ["Friends"],
+    "summary": "Obtener número de amigos",
+    "description": "Obtiene la lista de amigos de un usuario específico.",
+    "parameters": [
+      {
+        "name": "user_id",
+        "in": "path",
+        "description": "ID del usuario",
+        "required": true,
+        "type": "integer"
+      },
+      {
+        "name": "token",
+        "in": "header",
+        "description": "Token de autenticación",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Lista de amigos obtenida correctamente"
+      },
+      "400": {
+        "description": "Solicitud inválida"
+      },
+      "500": {
+        "description": "Error interno del servidor"
+      }
+    }
+  }
+}
+  },
+  "definitions": {
+    "AddFriend": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "integer",
+          "description": "Id del usuario"
+        },
+        "amigo_id": {
+          "type": "integer",
+          "description": "amigo a agregar"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Mensaje de error"
+        },
+        "errors": {
+          "type": "object",
+          "description": "Diccionario con los errores de validación"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

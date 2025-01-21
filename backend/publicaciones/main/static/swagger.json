@@ -1,0 +1,394 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Microservicio para los post",
+    "version": "1.0.0",
+    "title": "Microservicios Posts",
+    "termsOfService": "Leer wwww.ug.edu.com",
+    "contact": {
+      "email": "anthony.nareafra@ug.edu.ec"
+    },
+    "license": {
+      "name": "AlumniUG",
+      "url": "none"
+    }
+  },
+  "tags": [
+    {
+      "name": "Microservicios para los posts",
+      "description": "ver, crear, actualizar y eliminar posts"
+    }
+  ],
+  "paths": {
+    "/posts": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Obtener todos los posts",
+        "description": "Obtiene una lista con todos los posts en la base de datos",
+        "operationId": "obtenerTodosPost",
+        "produces":[
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer token para autenticación",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de posts obtenida con exito",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "401": {
+            "description": "No autorizado (token inválido o faltante",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el Servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/posts/user/{id_usuario}": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Obtener todos los posts de un usuario",
+        "description": "Obtiene una lista con todos los posts que tiene un usuario",
+        "operationId": "obtenerPostUsuario",
+        "produces":[
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_usuario",
+            "description": "ID de; usuario",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de posts obtenida con exito",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "401": {
+            "description": "No autorizado (token inválido o faltante",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el Servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "No se encontró al usuario",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/posts/best/{user_id}": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Obtiene el post con más interacciones de un usuario",
+        "description": "Obtiene el post con más interacciones de un usuario",
+        "operationId": "obtenerBestPostUsuario",
+        "produces":[
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "description": "ID de; usuario",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de posts obtenida con exito",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "401": {
+            "description": "No autorizado (token inválido o faltante",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el Servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "No se encontró al usuario",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/posts/create/{user_id}": {
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Crear una nueva publicación",
+        "description": "Servicio para crear un post asociado a un usuario autenticado.",
+        "operationId": "crearPost",
+        "produces": [
+            "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "user_id",
+            "description": "user_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "post_content",
+            "description": "datos del post",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "post_content": {
+                  "type": "string",
+                  "description": "Contenido del post"
+                }
+              },
+              "required": [
+                "post_content"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post creado con exito",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "401": {
+            "description": "No autorizado (token inválido o faltante",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el Servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Solicitud invalida",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/posts/update/{id_post}": {
+      "put": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Actualizar un post",
+        "description": "Actualiza un post existente",
+        "operationId": "actualizarPost",
+        "consumes":[
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_post",
+            "description": "ID del post",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "dato nuevo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdatePostRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post eliminado con exito",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "400": {
+            "description": "Datos de solicitud inválidos",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el Servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Post": {
+      "type": "object",
+      "properties": {
+        "success": {
+            "type": "boolean",
+            "default": false
+        },
+        "message": {
+            "type": "string",
+            "example": "ok"
+        },
+        "data": {
+          "type": "string",
+          "example": "{}"
+        },
+        "status": {
+          "type": "string",
+          "example": "200"
+        }
+      }
+   },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Mensaje de error"
+        },
+        "errors": {
+          "type": "object",
+          "description": "Diccionario con los errores de validación"
+        }
+      }
+    },
+    "UpdatePostRequest": {
+      "type": "object",
+      "properties": {
+        "post_content": {
+          "type": "string",
+          "description": "contenido nuevo"
+        }
+      },
+      "required": [
+        "post_content"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

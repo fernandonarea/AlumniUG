@@ -1,0 +1,3 @@
+20:17:20 - ERR - getRecords - (SyntaxError("error de sintaxis en o cerca de «=»\nLINE 1: SELECT COUNT(*) AS VALOR FROM usersWHERE username = 'prueba'...\n                                                          ^\n"),)
+20:21:34 - ERR - getRecords - (SyntaxError("error de sintaxis en o cerca de «=»\nLINE 1: SELECT COUNT(*) AS valor FROM usersWHERE username = 'prueba'...\n                                                          ^\n"),)
+20:23:59 - ERR - getRecords - (SyntaxError("error de sintaxis en o cerca de «=»\nLINE 1: SELECT count(*) as valor FROM usersWHERE username = 'prueba'...\n                                                          ^\n"),)

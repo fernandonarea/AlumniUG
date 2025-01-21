@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  login:
+    build: 
+      context: ./backend/login
+      dockerfile: Dockerfile
+    ports:
+      - 1008:1008
+    networks:
+      - app-network
+  usuarios:
+    build: 
+      context: ./backend/usuarios
+      dockerfile: Dockerfile
+    ports:
+      - 1009:1009
+    networks:
+      - app-network
+  facultades:
+    build: 
+      context: ./backend/facultades
+      dockerfile: Dockerfile
+    ports:
+      - 1012:1012
+    networks:
+      - app-network
+  publicaciones:
+    build: 
+      context: ./backend/publicaciones
+      dockerfile: Dockerfile
+    ports:
+      - 1011:1011
+    networks:
+      - app-network
+  interacciones:
+    build: 
+      context: ./backend/interacciones
+      dockerfile: Dockerfile
+    ports:
+      - 1013:1013
+    networks:
+      - app-network
+  friendships:
+    build: 
+      context: ./backend/friendships
+      dockerfile: Dockerfile
+    ports:
+      - 1015:1015
+    networks:
+      - app-network
+  foros:
+    build:
+      context: ./backend/foros
+      dockerfile : Dockerfile
+    ports:
+      - 1016:1016
+    networks:
+      - app-network
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

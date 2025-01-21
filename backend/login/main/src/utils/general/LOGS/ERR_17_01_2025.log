@@ -1,0 +1,7 @@
+21:10:29 - ERR - login - (TypeError('list indices must be integers or slices, not str'),)
+21:10:38 - ERR - login - (TypeError("'dict' object is not callable"),)
+21:36:36 - ERR - login - (TypeError("unhashable type: 'RealDictRow'"),)
+21:36:57 - ERR - login - (TypeError("unhashable type: 'RealDictRow'"),)
+21:37:10 - ERR - login - (TypeError("unhashable type: 'RealDictRow'"),)
+22:07:21 - ERR - login - (KeyError('user_id'),)
+22:08:03 - ERR - login - (KeyError('user_id'),)

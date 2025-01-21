@@ -1,0 +1,32 @@
+.usuarios{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 50px;
+    justify-content: center;
+    padding: 30px;
+}
+
+.users-list{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px ;
+    background-color: white;
+    border-radius: 15px ;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+}
+
+.busqueda{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.input{
+    width: 400px;
+    justify-content: center;
+    margin-top: 20px;
+}

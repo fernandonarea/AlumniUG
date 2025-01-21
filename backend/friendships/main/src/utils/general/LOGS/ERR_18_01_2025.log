@@ -1,0 +1,6 @@
+19:42:17 - ERR - ExecuteNonQuery - (ObjectNotInPrerequisiteState('lastval no está definido en esta sesión\n'),)
+19:45:34 - ERR - ExecuteNonQuery - (UniqueViolation('llave duplicada viola restricción de unicidad «friends_pkey»\nDETAIL:  Ya existe la llave (user_id, amigo_id)=(6, 7).\n'),)
+20:04:51 - ERR - ExecuteNonQuery - (ForeignKeyViolation('inserción o actualización en la tabla «friends» viola la llave foránea «friends_user_id_fkey»\nDETAIL:  La llave (user_id)=(8) no está presente en la tabla «users».\n'),)
+20:45:53 - ERR - ExecuteNonQuery - (UniqueViolation('llave duplicada viola restricción de unicidad «friends_pkey»\nDETAIL:  Ya existe la llave (user_id, amigo_id)=(21, 27).\n'),)
+20:46:28 - ERR - ExecuteNonQuery - (UniqueViolation('llave duplicada viola restricción de unicidad «friends_pkey»\nDETAIL:  Ya existe la llave (user_id, amigo_id)=(21, 16).\n'),)
+20:50:23 - ERR - ExecuteNonQuery - (UniqueViolation('llave duplicada viola restricción de unicidad «friends_pkey»\nDETAIL:  Ya existe la llave (user_id, amigo_id)=(21, 16).\n'),)

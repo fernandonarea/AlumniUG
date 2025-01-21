@@ -1,0 +1,106 @@
+.forosContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 100vh;
+    width: 100%
+}
+
+.forosHead{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    padding: 30px;
+    margin-top: 20px;
+    margin-left: 30px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.foros{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.foroItem{
+    padding: 30px;
+}
+
+.foros-content{
+    margin-top: 20px;
+    height: fit-content;
+    width: 100%;
+    margin-right: 20px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.forotitle{
+    padding: 10px;
+    background-color: rgb(72, 72, 209);
+    border-radius: 5px;
+    color: white;
+}
+
+
+.forosMessages{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    
+}
+
+.btnForm{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.messageContent{
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    background-color: rgb(115, 128, 183);
+}
+
+.sendMessage{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.actions{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+/* .createForo{
+    margin-top: 10px;
+}
+
+
+.createForoForm{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.createForoForm form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+} */

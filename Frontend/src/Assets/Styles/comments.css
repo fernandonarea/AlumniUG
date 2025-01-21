@@ -1,0 +1,21 @@
+.comment-section{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(232, 232, 232);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.owner{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.comment-containerClasses{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

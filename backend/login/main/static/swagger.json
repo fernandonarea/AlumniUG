@@ -1,0 +1,157 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Documentación  de Servicios Web de DAWA",
+    "version": "1.0.0",
+    "title": "Documentación  de DAWA",
+    "termsOfService": "Leer wwww.ug.edu.com",
+    "contact": {
+      "email": "anthony.nareafra@ug.edu.ec"
+    },
+    "license": {
+      "name": "Dawa UG",
+      "url": "none"
+    }
+  },
+  "tags": [
+    {
+      "name": "MicroService Login",
+      "description": "Login y autenticación de usuarios"
+    }
+  ],
+  "paths": {
+    "/api/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Login de Usuario",
+        "description": "Login de Usuario",
+        "operationId": "loginUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Credenciales de usuario",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/loginUserDef"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/NotFound"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "loginUserDef": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "format": "string"
+        },
+        "password": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "NotFound": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "default": false
+        },
+        "message": {
+          "type": "string",
+          "example": "Recurso no encontrado"
+        },
+        "data": {
+          "type": "string",
+          "example": "{}"
+        },
+        "status": {
+          "type": "string",
+          "example": "404"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "default": false
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string",
+          "example": "{}"
+        },
+        "status": {
+          "type": "string",
+          "example": "500"
+        }
+      }
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "default": false
+        },
+        "message": {
+          "type": "string",
+          "example": "ok"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "token": {
+              "type": "string",
+              "description": "Token JWT de autenticación"
+            }
+          },
+          "example": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          }
+        },
+        "status": {
+          "type": "string",
+          "example": "200"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

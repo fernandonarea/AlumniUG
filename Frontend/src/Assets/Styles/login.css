@@ -1,0 +1,70 @@
+.main{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 100%;
+  max-width: 900px;
+  background-color: white;
+  border-radius: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  box-shadow: 1px 1px 10px rgb(0, 0, 0);
+}
+
+.form {
+  display: flex;
+  width: 100%;
+}
+
+.loginForm {
+  flex: 1;
+  width: 600px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.loginForm h2 {
+  margin-bottom: 20px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: fit-content;
+  width: 100%;
+  justify-content: flex-start;
+  font-weight: bold;
+  top: 0;
+}
+
+.loginForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.imageContainer {
+  position: relative;
+  flex: 1;
+  background-color: #ffff;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.imageContainer img {
+  width: 400px;
+  height: 500px;
+  border-radius: 20px;
+  object-fit: cover;
+}

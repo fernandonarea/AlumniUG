@@ -1,0 +1,400 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Documentación  de Servicios Web del proyecto final de DAWA",
+    "version": "1.0.0",
+    "title": "Documentación de DAWA",
+    "termsOfService": "Leer wwww.ug.edu.com",
+    "contact": {
+      "email": "anthony.nareafra@ug.edu.ec"
+    },
+    "license": {
+      "name": "AlumniUG",
+      "url": "none"
+    }
+  },
+  "tags": [
+    {
+      "name": "microservicio de usuarios",
+      "description": "crear, eliminar, actualizar usuario"
+    }
+  ],
+  "paths": {
+    "/api/users": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Obtener todos los usuarios",
+        "description": "Obtener todos los usuarios de la base de datos",
+        "operationId": "getUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Usuario creado con exito",
+            "schema": {
+              "$ref": "#/definitions/CreateUserResponse"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Crear nuevo usuario",
+        "description": "Crea un nuevo usuario en la base de datos",
+        "operationId": "createUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "datos de los usuarios",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Usuario creado con exito",
+            "schema": {
+              "$ref": "#/definitions/CreateUserResponse"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{user_id}": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Obtener amigos no añadidos",
+        "description": "obtiene usuarios que no son amigos en la red",
+        "operationId": "getFriends",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "ID del usuario actual",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario actualizado correctamente",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Datos de solicitud inválidos",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Actualizar Usuario",
+        "description": "Actualiza los datos especificados del usuario",
+        "operationId": "updateUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "ID del usuario a actualizar",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Datos del usuario a actualizar",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario actualizado correctamente",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Datos de solicitud inválidos",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Eliminar un usuario",
+        "description": "Elimina un usuario de la base de datos.",
+        "operationId": "deleteUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "ID del usuario a eliminar",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario eliminado exitosamente",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "CreateUserRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "Nombre de usuario"
+        },
+        "password": {
+          "type": "string",
+          "description": "Contraseña del usuario"
+        },
+        "name": {
+          "type": "string",
+          "description": "Nombre del usuario"
+        },
+        "lastname": {
+          "type": "string",
+          "description": "Apellido del usuario"
+        },
+        "id_facultad": {
+          "type": "integer",
+          "description": "ID de la facultad del usuario"
+        }
+      },
+      "required": [
+        "username",
+        "password",
+        "name",
+        "lastname",
+        "id_facultad"
+      ]
+    },
+    "CreateUserResponse": {
+      "type": "object",
+      "properties": {
+        "id_user": {
+          "type": "integer",
+          "description": "ID del usuario creado"
+        }
+      }
+    },
+    "UpdateUserRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "Nombre de usuario"
+        },
+        "name": {
+          "type": "string",
+          "description": "Nombre del usuario"
+        },
+        "lastname": {
+          "type": "string",
+          "description": "Apellido del usuario"
+        }
+      },
+      "required": [
+        "username",
+        "name",
+        "lastname"
+      ]
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id_user": {
+          "type": "integer",
+          "description": "ID del usuario"
+        },
+        "username": {
+          "type": "string",
+          "description": "Nombre de usuario"
+        },
+        "name": {
+          "type": "string",
+          "description": "Nombre del usuario"
+        },
+        "lastname": {
+          "type": "string",
+          "description": "Apellido del usuario"
+        },
+        "profile_photo": {
+          "type": "string",
+          "description": "URL de la foto de perfil"
+        },
+        "registration_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Fecha de registro"
+        },
+        "status": {
+          "type": "boolean",
+          "description": "Estado del usuario (activo/inactivo)"
+        },
+        "id_facultad": {
+          "type": "integer",
+          "description": "ID de la facultad"
+        },
+        "id_carrera": {
+          "type": "integer",
+          "description": "ID de la carrera"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Mensaje de error"
+        },
+        "errors": {
+          "type": "object",
+          "description": "Diccionario con los errores de validación"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

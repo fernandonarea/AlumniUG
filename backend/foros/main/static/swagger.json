@@ -1,0 +1,416 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Documentación  de Servicios Web del proyecto final de DAWA",
+    "version": "1.0.0",
+    "title": "Documentación de DAWA",
+    "termsOfService": "Leer wwww.ug.edu.com",
+    "contact": {
+      "email": "anthony.nareafra@ug.edu.ec"
+    },
+    "license": {
+      "name": "AlumniUG",
+      "url": "none"
+    }
+  },
+  "tags": [
+    {
+      "name": "microservicio de usuarios",
+      "description": "crear, eliminar, actualizar usuario"
+    }
+  ],
+  "paths": {
+    "/foros": {
+      "get": {
+        "tags": [
+          "Foros"
+        ],
+        "summary": "Obtener todos los foros",
+        "description": "Obtener todos los foros de la base de datos",
+        "operationId": "getforos",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Foros obtenidos con exito",
+            "schema": {
+              "$ref": "#/definitions/GetForos"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/foro/{id_forum}": {
+      "get": {
+        "tags": [
+          "Foros"
+        ],
+        "summary": "obtener Foro especifico",
+        "description": "obtener Foro especifico",
+        "operationId": "getOneForo",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id_forum",
+            "in": "path",
+            "description": "ID del foro a obtener",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "foro obtenido correctamente",
+            "schema": {
+              "$ref": "#/definitions/GetOneForos"
+            }
+          },
+          "400": {
+            "description": "Datos de solicitud inválidos",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/foros/create": {
+      "post": {
+        "tags": [
+          "Foros"
+        ],
+        "summary": "crear Foro ",
+        "description": "crear Foro",
+        "operationId": "createForo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "datos del foro",
+            "description": "titulo del foro",
+            "required": true,
+            "schema":{
+              "$ref":"#/definitions/createForo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "foro obtenido correctamente",
+            "schema": {
+              "$ref": "#/definitions/GetOneForos"
+            }
+          },
+          "400": {
+            "description": "Datos de solicitud inválidos",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/addMessage/{forum_id}/{user_id}": {
+      "post": {
+        "tags": [
+          "messages"
+        ],
+        "summary": "crear mensaje en un foro ",
+        "description": "crear mensaje en un foro",
+        "operationId": "createMessage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "forum_id",
+            "description": "id del foro a comentar",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "user_id",
+            "description": "id del user que comenta",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "message_content",
+            "description": "mensaje",
+            "required": true,
+            "schema":{
+              "$ref":"#/definitions/createMessage"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "foro obtenido correctamente",
+            "schema": {
+              "$ref": "#/definitions/GetOneForos"
+            }
+          },
+          "400": {
+            "description": "Datos de solicitud inválidos",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Error en el servidor",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "createForo": {
+      "type": "object",
+      "properties": {
+        "forum_title": {
+          "type": "string",
+          "format": "string"
+        },
+        "forum_description": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "createMessage": {
+      "type": "object",
+      "properties": {
+        "message_content": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "GetForos": {
+      "type": "object",
+      "properties": {
+        "id_forum": {
+          "type": "int",
+          "description": "id del foro"
+        },
+        "title": {
+          "type": "string",
+          "description": "titulo del foro"
+        },
+        "name": {
+          "type": "string",
+          "description": "Nombre del usuario"
+        },
+        "description": {
+          "type": "string",
+          "description": "descripcion del foro"
+        }
+      },
+      "required": [
+        "username",
+        "password",
+        "name",
+        "lastname",
+        "id_facultad"
+      ]
+    },
+    "GetOneForos": {
+      "type": "object",
+      "properties": {
+        "id_forum": {
+          "type": "int",
+          "description": "id del foro"
+        },
+        "title": {
+          "type": "string",
+          "description": "titulo del foro"
+        },
+        "message": {
+          "type": "object",
+          "description": "foros"
+        }
+      },
+      "required": [
+        "username",
+        "password",
+        "name",
+        "lastname",
+        "id_facultad"
+      ]
+    },
+    "CreateUserResponse": {
+      "type": "object",
+      "properties": {
+        "id_user": {
+          "type": "integer",
+          "description": "ID del usuario creado"
+        }
+      }
+    },
+    "UpdateUserRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "Nombre de usuario"
+        },
+        "name": {
+          "type": "string",
+          "description": "Nombre del usuario"
+        },
+        "lastname": {
+          "type": "string",
+          "description": "Apellido del usuario"
+        }
+      },
+      "required": [
+        "username",
+        "name",
+        "lastname"
+      ]
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id_user": {
+          "type": "integer",
+          "description": "ID del usuario"
+        },
+        "username": {
+          "type": "string",
+          "description": "Nombre de usuario"
+        },
+        "name": {
+          "type": "string",
+          "description": "Nombre del usuario"
+        },
+        "lastname": {
+          "type": "string",
+          "description": "Apellido del usuario"
+        },
+        "profile_photo": {
+          "type": "string",
+          "description": "URL de la foto de perfil"
+        },
+        "registration_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Fecha de registro"
+        },
+        "status": {
+          "type": "boolean",
+          "description": "Estado del usuario (activo/inactivo)"
+        },
+        "id_facultad": {
+          "type": "integer",
+          "description": "ID de la facultad"
+        },
+        "id_carrera": {
+          "type": "integer",
+          "description": "ID de la carrera"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Mensaje de error"
+        },
+        "errors": {
+          "type": "object",
+          "description": "Diccionario con los errores de validación"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

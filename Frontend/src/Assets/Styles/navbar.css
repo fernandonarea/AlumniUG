@@ -1,0 +1,28 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-bottom: 2px solid #ddd;
+    height: 60px; 
+}
+  
+.navbar-left{
+    display: flex;
+    margin-left: 65px;
+    flex: row;
+    gap: 15px
+}
+
+.navbar-right{
+    margin-right: 50px;
+}
+
+.nombreUser{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+  
+  
